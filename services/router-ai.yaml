@@ -23,6 +23,11 @@ spec:
   system: ai-customer-service-platform
   dependsOn:
     - resource:kafka-message-broker
+    - resource:kafka-topic-router
+    - resource:kafka-topic-support
+    - resource:kafka-topic-finance
+    - resource:kafka-topic-website
+    - resource:kafka-topic-unknown
     - resource:openai-service
   providesApis: []
   consumesApis: [] 

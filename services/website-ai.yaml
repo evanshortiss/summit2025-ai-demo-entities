@@ -23,6 +23,9 @@ spec:
   system: ai-customer-service-platform
   dependsOn:
     - resource:kafka-message-broker
+    - resource:kafka-topic-website
+    - resource:kafka-topic-outflow
+    - resource:kafka-topic-error
     - resource:openai-service
     - component:website-mcp
   providesApis: []

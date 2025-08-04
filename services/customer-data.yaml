@@ -20,6 +20,9 @@ spec:
   system: ai-customer-service-platform
   dependsOn:
     - resource:kafka-message-broker
+    - resource:kafka-topic-message
+    - resource:kafka-topic-customer-data
+    - resource:kafka-topic-error
     - resource:postgresql-database
   providesApis: []
   consumesApis: [] 

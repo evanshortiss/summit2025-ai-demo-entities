@@ -8,6 +8,7 @@ spec:
     - ./domain.yaml
     - ./system.yaml
     - ./resources.yaml
+    - ./kafka-topics.yaml
     - ./apis.yaml
     - ./services/customer-data.yaml
     - ./services/document-embedding.yaml

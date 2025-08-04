@@ -11,6 +11,7 @@ The platform consists of 10 microservices organized around a central message rou
 - **Domain**: `customer-service` - Customer Service Operations
 - **System**: `ai-customer-service-platform` - Main system containing all components
 - **Resources**: Shared infrastructure (Kafka, PostgreSQL, OpenAI, Milvus)
+- **Kafka Topics**: Event-driven message channels for service communication
 - **Services**: 10 microservices handling different aspects of customer service
 - **APIs**: REST and MCP APIs for external integration
 
@@ -42,11 +43,16 @@ The platform consists of 10 microservices organized around a central message rou
 
 ## Message Flow
 
-1. Messages enter through the **moderation** service for content filtering
-2. **structured-output** extracts key information
-3. **router-ai** classifies and routes messages to appropriate teams
-4. Specialized AI assistants (**support-ai**, **finance-ai**, **website-ai**) handle domain-specific queries
-5. Supporting services (**customer-data**, **finance-api**, **document-embedding**) provide data and context
+1. Messages enter through the **intake** topic to the **moderation** service for content filtering
+2. Moderated content flows to **outflow** topic and **message** topic for processing
+3. **structured-output** service extracts key information from **message** topic
+4. **router-ai** service classifies messages and routes to domain-specific topics:
+   - **support** topic → **support-ai** service
+   - **finance** topic → **finance-ai** service  
+   - **website** topic → **website-ai** service
+   - **unknown** topic → manual review
+5. AI assistants process requests and publish responses to **outflow** topic
+6. **error** topic captures all service errors for centralized monitoring
 
 ## Team Ownership
 
@@ -83,6 +89,7 @@ backstage-catalog-info/
 ├── domain.yaml               # Customer service domain
 ├── system.yaml               # Main platform system
 ├── resources.yaml            # Shared infrastructure
+├── kafka-topics.yaml         # Kafka topic definitions
 ├── apis.yaml                 # API definitions
 ├── services/                 # Individual service definitions
 │   ├── customer-data.yaml
