@@ -1,0 +1,56 @@
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: finance-api
+  title: Finance API
+  description: REST API for managing financial records and customer order history
+  tags:
+    - rest
+    - finance
+    - customer-data
+spec:
+  type: openapi
+  lifecycle: production
+  owner: finance-team
+  system: ai-customer-service-platform
+  definition: |
+    openapi: 3.0.0
+    info:
+      title: Finance API
+      version: 1.0.0
+      description: API for retrieving customer financial records
+    paths:
+      /finance/v1/record/{customerId}:
+        get:
+          summary: Get customer financial records
+          parameters:
+            - name: customerId
+              in: path
+              required: true
+              schema:
+                type: string
+          responses:
+            '200':
+              description: Customer financial records
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: website-mcp-api
+  title: Website MCP API
+  description: Model Context Protocol API for website operations including password reset functionality
+  tags:
+    - mcp
+    - website
+    - tools
+spec:
+  type: mcp
+  lifecycle: production
+  owner: website-team
+  system: ai-customer-service-platform
+  definition: |
+    MCP Server for website operations:
+    - Password Reset Tool
+    - Website functionality tools
+    - Account management operations 

@@ -1,0 +1,29 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: finance-ai
+  title: Finance AI Assistant
+  description: AI-powered finance assistant service that processes financial queries using OpenAI and MCP (Model Context Protocol). Handles finance-related customer requests and provides intelligent responses.
+  tags:
+    - java
+    - quarkus
+    - kafka
+    - openai
+    - langchain4j
+    - finance
+    - mcp
+    - ai
+  annotations:
+    backstage.io/source-location: url:https://github.com/summit2025-ai-demo/finance-ai
+    quarkus.io/profile: jvm
+spec:
+  type: service
+  lifecycle: production
+  owner: finance-team
+  system: ai-customer-service-platform
+  dependsOn:
+    - resource:kafka-message-broker
+    - resource:openai-service
+    - component:finance-api
+  providesApis: []
+  consumesApis: [] 

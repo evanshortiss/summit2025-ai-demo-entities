@@ -1,0 +1,28 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: router-ai
+  title: AI Message Router
+  description: Intelligent message routing service that uses OpenAI to classify and route customer messages to appropriate service teams (Support, Finance, Website, or Unknown). Acts as the central message dispatcher in the platform.
+  tags:
+    - java
+    - quarkus
+    - kafka
+    - openai
+    - langchain4j
+    - routing
+    - classification
+    - ai
+  annotations:
+    backstage.io/source-location: url:https://github.com/summit2025-ai-demo/router-ai
+    quarkus.io/profile: jvm
+spec:
+  type: service
+  lifecycle: production
+  owner: platform-team
+  system: ai-customer-service-platform
+  dependsOn:
+    - resource:kafka-message-broker
+    - resource:openai-service
+  providesApis: []
+  consumesApis: [] 

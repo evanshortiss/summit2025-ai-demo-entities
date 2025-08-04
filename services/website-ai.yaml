@@ -1,0 +1,29 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: website-ai
+  title: Website AI Assistant
+  description: AI-powered website assistant service that handles website-related queries using OpenAI and MCP (Model Context Protocol). Provides intelligent assistance for website functionality and user account issues.
+  tags:
+    - java
+    - quarkus
+    - kafka
+    - openai
+    - langchain4j
+    - website
+    - mcp
+    - ai
+  annotations:
+    backstage.io/source-location: url:https://github.com/summit2025-ai-demo/website-ai
+    quarkus.io/profile: jvm
+spec:
+  type: service
+  lifecycle: production
+  owner: website-team
+  system: ai-customer-service-platform
+  dependsOn:
+    - resource:kafka-message-broker
+    - resource:openai-service
+    - component:website-mcp
+  providesApis: []
+  consumesApis: [] 

@@ -1,0 +1,28 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: moderation
+  title: Message Moderation Service
+  description: AI-powered content moderation service using OpenAI moderation API. Processes incoming messages through Kafka to detect and filter inappropriate content before routing to other services.
+  tags:
+    - java
+    - quarkus
+    - kafka
+    - openai
+    - langchain4j
+    - moderation
+    - content-filtering
+    - ai
+  annotations:
+    backstage.io/source-location: url:https://github.com/summit2025-ai-demo/moderation
+    quarkus.io/profile: jvm
+spec:
+  type: service
+  lifecycle: production
+  owner: safety-team
+  system: ai-customer-service-platform
+  dependsOn:
+    - resource:kafka-message-broker
+    - resource:openai-service
+  providesApis: []
+  consumesApis: [] 
