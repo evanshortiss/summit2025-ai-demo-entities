@@ -6,6 +6,8 @@ metadata:
   name: kafka-topic-intake
   title: Intake Topic
   description: Entry point for all incoming customer messages before moderation
+  annotations:
+    kafka.io/topic-name: "customer-intake"
   tags:
     - kafka
     - topic
@@ -24,6 +26,8 @@ metadata:
   name: kafka-topic-message
   title: Message Topic
   description: Contains messages for customer data processing and structured output analysis
+  annotations:
+    kafka.io/topic-name: "customer-messages"
   tags:
     - kafka
     - topic
@@ -41,6 +45,8 @@ metadata:
   name: kafka-topic-router
   title: Router Topic
   description: Messages routed for AI classification and routing decisions
+  annotations:
+    kafka.io/topic-name: "ai-router"
   tags:
     - kafka
     - topic
@@ -58,6 +64,8 @@ metadata:
   name: kafka-topic-documents
   title: Documents Topic
   description: Document content for embedding generation and vector storage
+  annotations:
+    kafka.io/topic-name: "document-embeddings"
   tags:
     - kafka
     - topic
@@ -77,6 +85,8 @@ metadata:
   name: kafka-topic-support
   title: Support Topic
   description: Support-related messages routed by AI classifier to support team
+  annotations:
+    kafka.io/topic-name: "support-requests"
   tags:
     - kafka
     - topic
@@ -95,6 +105,8 @@ metadata:
   name: kafka-topic-finance
   title: Finance Topic
   description: Finance-related messages routed by AI classifier to finance team
+  annotations:
+    kafka.io/topic-name: "finance-requests"
   tags:
     - kafka
     - topic
@@ -113,6 +125,8 @@ metadata:
   name: kafka-topic-website
   title: Website Topic
   description: Website-related messages routed by AI classifier to website team
+  annotations:
+    kafka.io/topic-name: "website-requests"
   tags:
     - kafka
     - topic
@@ -131,6 +145,8 @@ metadata:
   name: kafka-topic-unknown
   title: Unknown Topic
   description: Messages that cannot be classified by AI router - requires manual review
+  annotations:
+    kafka.io/topic-name: "unknown-messages"
   tags:
     - kafka
     - topic
@@ -150,6 +166,8 @@ metadata:
   name: kafka-topic-outflow
   title: Outflow Topic
   description: Processed responses from AI assistants and moderated content flowing out of the system
+  annotations:
+    kafka.io/topic-name: "customer-outflow"
   tags:
     - kafka
     - topic
@@ -168,6 +186,8 @@ metadata:
   name: kafka-topic-structured-output
   title: Structured Output Topic
   description: Structured information extracted from unstructured messages by AI
+  annotations:
+    kafka.io/topic-name: "structured-output"
   tags:
     - kafka
     - topic
@@ -186,6 +206,8 @@ metadata:
   name: kafka-topic-customer-data
   title: Customer Data Topic
   description: Customer data events and updates from customer data service
+  annotations:
+    kafka.io/topic-name: "customer-data-events"
   tags:
     - kafka
     - topic
@@ -205,6 +227,8 @@ metadata:
   name: kafka-topic-error
   title: Error Topic
   description: Error events from all services for centralized error handling and monitoring
+  annotations:
+    kafka.io/topic-name: "system-errors"
   tags:
     - kafka
     - topic
