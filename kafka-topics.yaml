@@ -7,7 +7,7 @@ metadata:
   title: Intake Topic
   description: Entry point for all incoming customer messages before moderation
   annotations:
-    kafka.io/topic-name: "customer-intake"
+    kafka.io/topic-name: "intake"
   tags:
     - kafka
     - topic
@@ -23,30 +23,11 @@ spec:
 apiVersion: backstage.io/v1alpha1
 kind: Resource
 metadata:
-  name: kafka-topic-message
-  title: Message Topic
-  description: Contains messages for customer data processing and structured output analysis
-  annotations:
-    kafka.io/topic-name: "customer-messages"
-  tags:
-    - kafka
-    - topic
-    - message-processing
-spec:
-  type: topic
-  owner: platform-team
-  system: ai-customer-service-platform
-  dependsOn:
-    - resource:kafka-message-broker
----
-apiVersion: backstage.io/v1alpha1
-kind: Resource
-metadata:
   name: kafka-topic-router
   title: Router Topic
   description: Messages routed for AI classification and routing decisions
   annotations:
-    kafka.io/topic-name: "ai-router"
+    kafka.io/topic-name: "router"
   tags:
     - kafka
     - topic
@@ -61,19 +42,39 @@ spec:
 apiVersion: backstage.io/v1alpha1
 kind: Resource
 metadata:
-  name: kafka-topic-documents
-  title: Documents Topic
-  description: Document content for embedding generation and vector storage
+  name: kafka-topic-moderated
+  title: Moderated Topic
+  description: Messages that have been moderated and approved for processing
   annotations:
-    kafka.io/topic-name: "document-embeddings"
+    kafka.io/topic-name: "moderated"
   tags:
     - kafka
     - topic
-    - documents
-    - embeddings
+    - moderation
+    - approved
 spec:
   type: topic
-  owner: ai-team
+  owner: platform-team
+  system: ai-customer-service-platform
+  dependsOn:
+    - resource:kafka-message-broker
+---
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: kafka-topic-review
+  title: Review Topic
+  description: Messages requiring manual review before processing
+  annotations:
+    kafka.io/topic-name: "review"
+  tags:
+    - kafka
+    - topic
+    - manual-review
+    - quality-control
+spec:
+  type: topic
+  owner: platform-team
   system: ai-customer-service-platform
   dependsOn:
     - resource:kafka-message-broker
@@ -86,7 +87,7 @@ metadata:
   title: Support Topic
   description: Support-related messages routed by AI classifier to support team
   annotations:
-    kafka.io/topic-name: "support-requests"
+    kafka.io/topic-name: "support"
   tags:
     - kafka
     - topic
@@ -102,11 +103,32 @@ spec:
 apiVersion: backstage.io/v1alpha1
 kind: Resource
 metadata:
+  name: kafka-topic-support-documents
+  title: Support Documents Topic
+  description: Support documentation and knowledge base content for support team reference
+  annotations:
+    kafka.io/topic-name: "support-documents"
+  tags:
+    - kafka
+    - topic
+    - support
+    - documents
+    - knowledge-base
+spec:
+  type: topic
+  owner: support-team
+  system: ai-customer-service-platform
+  dependsOn:
+    - resource:kafka-message-broker
+---
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
   name: kafka-topic-finance
   title: Finance Topic
   description: Finance-related messages routed by AI classifier to finance team
   annotations:
-    kafka.io/topic-name: "finance-requests"
+    kafka.io/topic-name: "finance"
   tags:
     - kafka
     - topic
@@ -126,7 +148,7 @@ metadata:
   title: Website Topic
   description: Website-related messages routed by AI classifier to website team
   annotations:
-    kafka.io/topic-name: "website-requests"
+    kafka.io/topic-name: "website"
   tags:
     - kafka
     - topic
@@ -139,26 +161,6 @@ spec:
   dependsOn:
     - resource:kafka-message-broker
 ---
-apiVersion: backstage.io/v1alpha1
-kind: Resource
-metadata:
-  name: kafka-topic-unknown
-  title: Unknown Topic
-  description: Messages that cannot be classified by AI router - requires manual review
-  annotations:
-    kafka.io/topic-name: "unknown-messages"
-  tags:
-    - kafka
-    - topic
-    - unclassified
-    - manual-review
-spec:
-  type: topic
-  owner: platform-team
-  system: ai-customer-service-platform
-  dependsOn:
-    - resource:kafka-message-broker
----
 # Processing Output Topics
 apiVersion: backstage.io/v1alpha1
 kind: Resource
@@ -167,7 +169,7 @@ metadata:
   title: Outflow Topic
   description: Processed responses from AI assistants and moderated content flowing out of the system
   annotations:
-    kafka.io/topic-name: "customer-outflow"
+    kafka.io/topic-name: "outflow"
   tags:
     - kafka
     - topic
@@ -187,7 +189,7 @@ metadata:
   title: Structured Output Topic
   description: Structured information extracted from unstructured messages by AI
   annotations:
-    kafka.io/topic-name: "structured-output"
+    kafka.io/topic-name: "structured"
   tags:
     - kafka
     - topic
@@ -199,44 +201,3 @@ spec:
   system: ai-customer-service-platform
   dependsOn:
     - resource:kafka-message-broker
----
-apiVersion: backstage.io/v1alpha1
-kind: Resource
-metadata:
-  name: kafka-topic-customer-data
-  title: Customer Data Topic
-  description: Customer data events and updates from customer data service
-  annotations:
-    kafka.io/topic-name: "customer-data-events"
-  tags:
-    - kafka
-    - topic
-    - customer-data
-    - events
-spec:
-  type: topic
-  owner: customer-team
-  system: ai-customer-service-platform
-  dependsOn:
-    - resource:kafka-message-broker
----
-# Error Handling Topic
-apiVersion: backstage.io/v1alpha1
-kind: Resource
-metadata:
-  name: kafka-topic-error
-  title: Error Topic
-  description: Error events from all services for centralized error handling and monitoring
-  annotations:
-    kafka.io/topic-name: "system-errors"
-  tags:
-    - kafka
-    - topic
-    - error-handling
-    - monitoring
-spec:
-  type: topic
-  owner: platform-team
-  system: ai-customer-service-platform
-  dependsOn:
-    - resource:kafka-message-broker 
