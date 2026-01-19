@@ -25,7 +25,7 @@ spec:
     - resource:kafka-message-broker
     - resource:kafka-topic-message
     - resource:kafka-topic-structured-output
-    - resource:kafka-topic-error
+    - resource:kafka-topic-review
     - resource:openai-service
   providesApis: []
   consumesApis: [] 

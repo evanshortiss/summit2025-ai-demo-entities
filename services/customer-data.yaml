@@ -22,7 +22,7 @@ spec:
     - resource:kafka-message-broker
     - resource:kafka-topic-message
     - resource:kafka-topic-customer-data
-    - resource:kafka-topic-error
+    - resource:kafka-topic-review
     - resource:postgresql-database
   providesApis: []
   consumesApis: [] 

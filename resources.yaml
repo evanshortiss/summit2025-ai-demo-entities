@@ -11,7 +11,7 @@ metadata:
     - event-streaming
 spec:
   type: message-broker
-  owner: platform-team
+  owner: platform-engineering
   system: ai-customer-service-platform
 ---
 apiVersion: backstage.io/v1alpha1
@@ -26,7 +26,7 @@ metadata:
     - persistence
 spec:
   type: database
-  owner: platform-team
+  owner: platform-engineering
   system: ai-customer-service-platform
 ---
 apiVersion: backstage.io/v1alpha1
@@ -42,7 +42,7 @@ metadata:
     - external-service
 spec:
   type: api
-  owner: platform-team
+  owner: platform-engineering
   system: ai-customer-service-platform
 ---
 apiVersion: backstage.io/v1alpha1
@@ -58,5 +58,5 @@ metadata:
     - ai
 spec:
   type: database
-  owner: platform-team
+  owner: platform-engineering
   system: ai-customer-service-platform 

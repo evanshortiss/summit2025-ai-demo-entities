@@ -25,7 +25,7 @@ spec:
     - resource:kafka-message-broker
     - resource:kafka-topic-support
     - resource:kafka-topic-outflow
-    - resource:kafka-topic-error
+    - resource:kafka-topic-review
     - resource:openai-service
     - resource:milvus-vector-database
   providesApis: []

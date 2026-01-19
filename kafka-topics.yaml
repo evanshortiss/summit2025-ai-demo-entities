@@ -15,7 +15,7 @@ metadata:
     - entry-point
 spec:
   type: topic
-  owner: platform-team
+  owner: platform-engineering
   system: ai-customer-service-platform
   dependsOn:
     - resource:kafka-message-broker
@@ -34,7 +34,7 @@ metadata:
     - ai-routing
 spec:
   type: topic
-  owner: platform-team
+  owner: platform-engineering
   system: ai-customer-service-platform
   dependsOn:
     - resource:kafka-message-broker
@@ -54,7 +54,7 @@ metadata:
     - approved
 spec:
   type: topic
-  owner: platform-team
+  owner: platform-engineering
   system: ai-customer-service-platform
   dependsOn:
     - resource:kafka-message-broker
@@ -74,7 +74,7 @@ metadata:
     - quality-control
 spec:
   type: topic
-  owner: platform-team
+  owner: platform-engineering
   system: ai-customer-service-platform
   dependsOn:
     - resource:kafka-message-broker
@@ -177,7 +177,7 @@ metadata:
     - output
 spec:
   type: topic
-  owner: platform-team
+  owner: platform-engineering
   system: ai-customer-service-platform
   dependsOn:
     - resource:kafka-message-broker

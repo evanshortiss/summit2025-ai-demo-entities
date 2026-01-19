@@ -19,7 +19,7 @@ metadata:
 spec:
   type: service
   lifecycle: production
-  owner: platform-team
+  owner: platform-engineering
   system: ai-customer-service-platform
   dependsOn:
     - resource:kafka-message-broker

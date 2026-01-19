@@ -20,3 +20,4 @@ spec:
     - ./services/support-ai.yaml
     - ./services/website-ai.yaml
     - ./services/website-mcp.yaml 
+    - ./services/customer-support-ui.yaml 
