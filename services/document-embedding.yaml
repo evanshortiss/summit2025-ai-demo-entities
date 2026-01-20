@@ -26,4 +26,5 @@ spec:
     - resource:milvus-vector-database
     - resource:openai-service
   providesApis: []
-  consumesApis: [] 
+  consumesApis:
+    - api:openai-api 

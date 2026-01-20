@@ -29,4 +29,5 @@ spec:
     - resource:openai-service
     - component:website-mcp
   providesApis: []
-  consumesApis: [] 
+  consumesApis:
+    - api:openai-api 

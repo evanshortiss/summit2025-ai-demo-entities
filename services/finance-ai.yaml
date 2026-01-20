@@ -29,4 +29,5 @@ spec:
     - resource:openai-service
     - component:finance-api
   providesApis: []
-  consumesApis: [] 
+  consumesApis:
+    - api:openai-api 

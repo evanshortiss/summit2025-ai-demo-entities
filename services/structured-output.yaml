@@ -28,4 +28,5 @@ spec:
     - resource:kafka-topic-review
     - resource:openai-service
   providesApis: []
-  consumesApis: [] 
+  consumesApis:
+    - api:openai-api 
