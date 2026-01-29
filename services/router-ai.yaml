@@ -27,7 +27,6 @@ spec:
     - resource:kafka-topic-support
     - resource:kafka-topic-finance
     - resource:kafka-topic-website
-    - resource:kafka-topic-unknown
     - resource:openai-service
   providesApis: []
   consumesApis: [] 
